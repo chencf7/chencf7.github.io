@@ -1,0 +1,26 @@
+{
+  "name": "lebroncc.github.io",
+  "version": "1.0.0",
+  "description": "lebroncc的个人网站",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./ -a 0.0.0.0 -p 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lebroncc/lebroncc.github.io.git"
+  },
+  "keywords": [
+    "技术、前端、分享"
+  ],
+  "author": "Chenchaofan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lebroncc/lebroncc.github.io/issues"
+  },
+  "homepage": "https://github.com/lebroncc/lebroncc.github.io#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
