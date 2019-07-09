@@ -16,6 +16,14 @@ div, section, p, header, footer, nav, ul, li, dl, dt, dd, h1,h2,h3,h4,h5{
 div{
   box-sizing: border-box;
 }
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  /* font-size: 0.16rem; */
+}
 
 .fcc-header{
   position: fixed;
@@ -34,7 +42,7 @@ div{
   vertical-align: middle;
   width: 1%;
   white-space: nowrap;
-  padding-right: 0.1rem;
+  padding: 0 0.1rem;
 }
 .site-title a{
   color: rgba(0,0,0,.6);
@@ -46,9 +54,50 @@ div{
   color: #3690cf;
   text-decoration: none;
 }
+.site-menu{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.site-menu ul{
+  margin-left: auto;
+  margin-right: 0;
+}
+.fcc-menuitem{
+  list-style-type: none;
+  display: inline-block;
+  line-height: 0.64rem;
+  padding: 0 0.1rem;
+  cursor: pointer;
+}
+.fcc-menuitem:focus, .fcc-menuitem:hover{
+  background: #3690cf;
+  color: #ffffff;
+}
+
+
 
 .content{
-  width: 11.2rem;
   height: 100%;
   margin: 0 auto;
+}
+@media (min-width: 576px) {
+  .content {
+    max-width: 5.40rem;
+  }
+}
+@media (min-width: 768px) {
+  .content {
+    max-width: 7.2rem;
+  }
+}
+@media (min-width: 992px) {
+  .content {
+    max-width: 9.6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .content{
+    max-width: 11.2rem;
+  }
 }
