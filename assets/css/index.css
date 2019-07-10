@@ -264,16 +264,24 @@ div{
 .bg-white{
   background: #fff;
 }
+.fcc-article{
+  margin: 0 0 0.1rem 0;
+  padding: 0.2rem;
+}
+.fcc-article a{
+  color: #000;
+  text-decoration: none;
+}
 .thumbnail {
   position: relative;
   float: left;
-  max-width: 200px;
+  max-width: 2rem;
   height: auto;
   clear: both;
   margin: 1px 20px 0 0;
   overflow: hidden;
-  transition-duration: .5s;
 }
+
 
 /**************************************************
 网站响应式布局
