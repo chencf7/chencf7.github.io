@@ -272,14 +272,34 @@ div{
   color: #000;
   text-decoration: none;
 }
-.thumbnail {
+.atl-thumbnail {
   position: relative;
   float: left;
   max-width: 2rem;
   height: auto;
-  clear: both;
-  margin: 1px 20px 0 0;
+  margin: 3px 20px 0 0;
   overflow: hidden;
+}
+.atl-thumbnail .category{
+   background: #3690cf;
+   border-top-left-radius: 5px;
+}
+.atl-thumbnail .category a {
+  color: #fff;
+  line-height: 0.28rem;
+  padding: 0 10px;
+}
+.atl-header::after{
+  content: ".";
+  display: table;
+  font-size: 0;
+  visibility: hidden;
+  clear: both;
+}
+.atl-header h2 a {
+  font-size: 0.16rem;
+  font-weight: 700;
+  line-height: 0.2rem;
 }
 
 
