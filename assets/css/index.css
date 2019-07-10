@@ -259,8 +259,8 @@ div{
 .fcc-content{
   padding-top: 0.64rem;
 }
-.fcc-main{}
-.fcc-side{}
+/* .fcc-main{} */
+/* .fcc-side{} */
 .bg-white{
   background: #fff;
 }
@@ -282,8 +282,7 @@ div{
   height: 100%;
   margin: 0 auto;
 }
-.fcc-row{
-}
+/* .fcc-row{} */
 .fcc-sm-1, .fcc-sm-2, .fcc-sm-3, .fcc-sm-4, .fcc-sm-5, .fcc-sm-6, .fcc-sm-7, 
 .fcc-sm-8, .fcc-sm-9, .fcc-sm-10, .fcc-sm-11, .fcc-sm-12, .fcc-sm, .fcc-sm-auto, 
 .fcc-md-1, .fcc-md-2, .fcc-md-3, .fcc-md-4, .fcc-md-5, .fcc-md-6, .fcc-md-7, 
