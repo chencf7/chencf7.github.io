@@ -5,6 +5,7 @@ body{
   font-size: 0.14rem;
   font-weight: 300;
   font-family: "msyh","Microsoft YaHei","微软雅黑";
+  background: #f1f1f1;
   color: #000;
   padding: 0;
   margin: 0;
@@ -34,6 +35,9 @@ div{
   transform: rotate(360deg);
 }
 
+/**************************************************
+网站导航栏 
+***************************************************/
 .fcc-header{
   position: fixed;
   width: 100%;
@@ -41,6 +45,7 @@ div{
   border-bottom: 1px solid #ddd;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  z-index: 1001;
 }
 .fcc-header nav{
   width: 100%;
@@ -145,7 +150,6 @@ div{
     transform:translateY(0)
   }
 }
-
 @keyframes avatar{
   16.65%{
     -webkit-transform:translateY(8px);
@@ -249,21 +253,66 @@ div{
   border-top: none;
 }
 
+/**************************************************
+网站内容页
+***************************************************/
+.fcc-content{
+  padding-top: 0.64rem;
+}
+.fcc-main{}
+.fcc-side{}
+.bg-white{
+  background: #fff;
+}
+.thumbnail {
+  position: relative;
+  float: left;
+  max-width: 200px;
+  height: auto;
+  clear: both;
+  margin: 1px 20px 0 0;
+  overflow: hidden;
+  transition-duration: .5s;
+}
 
-
+/**************************************************
+网站响应式布局
+***************************************************/
 .content{
   height: 100%;
   margin: 0 auto;
 }
+.fcc-row{
+}
+.fcc-sm-1, .fcc-sm-2, .fcc-sm-3, .fcc-sm-4, .fcc-sm-5, .fcc-sm-6, .fcc-sm-7, 
+.fcc-sm-8, .fcc-sm-9, .fcc-sm-10, .fcc-sm-11, .fcc-sm-12, .fcc-sm, .fcc-sm-auto, 
+.fcc-md-1, .fcc-md-2, .fcc-md-3, .fcc-md-4, .fcc-md-5, .fcc-md-6, .fcc-md-7, 
+.fcc-md-8, .fcc-md-9, .fcc-md-10, .fcc-md-11, .fcc-md-12, .fcc-md, .fcc-md-auto {
+  position: relative;
+  margin-top: 0.2rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
 @media (min-width: 576px) {
   .content {
-    max-width: 5.40rem;
+    max-width: 5.4rem;
   }
   .site-menu ul:first-child{
     display: block;
   }
   .site-menu ul:last-child{
     display: none;
+  }
+  .fcc-row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .fcc-md-8{
+    width: 66.666667%;
+  }
+  .fcc-md-4{
+    width: 33.333333%
   }
 }
 @media (min-width: 768px) {

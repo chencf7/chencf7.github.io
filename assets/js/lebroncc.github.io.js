@@ -1,5 +1,6 @@
 (function(window, document){
-  var currentH=document.body.clientHeight||window.innerHeight||window.screen.availHeight||window.screen.height;
+  // document.body.clientHeight
+  var currentH=window.innerHeight||window.screen.availHeight||window.screen.height;
   var pageObj={
 
     // 页面初始化方法
