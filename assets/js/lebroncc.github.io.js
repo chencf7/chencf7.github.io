@@ -7,7 +7,7 @@
     pageInit: function(){
       var contentEl=document.querySelector(".fcc-content");
       contentEl.style.height=currentH+"px";
-      contentEl.style.background="#f1f1f1";
+      // contentEl.style.background="#f1f1f1";
     }
   }
 

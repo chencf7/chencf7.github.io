@@ -5,7 +5,8 @@ body{
   font-size: 0.14rem;
   font-weight: 300;
   font-family: "msyh","Microsoft YaHei","微软雅黑";
-  background: #f1f1f1;
+  /* background: #f1f1f1; */
+  background: #ebeef2;
   color: #000;
   padding: 0;
   margin: 0;
@@ -266,7 +267,7 @@ div{
 }
 .fcc-article{
   margin: 0 0 0.1rem 0;
-  padding: 0.2rem;
+  padding: 0.1rem;
 }
 .fcc-article a{
   color: #000;
@@ -274,10 +275,10 @@ div{
 }
 .atl-thumbnail {
   position: relative;
-  float: left;
+  /* float: left; */
   max-width: 2rem;
   height: auto;
-  margin: 3px 20px 0 0;
+  margin: 0;
   overflow: hidden;
 }
 .atl-thumbnail .category{
@@ -286,7 +287,7 @@ div{
 }
 .atl-thumbnail .category a {
   color: #fff;
-  line-height: 0.28rem;
+  /* line-height: 0.28rem; */
   padding: 0 10px;
 }
 .atl-header::after{
@@ -299,7 +300,6 @@ div{
 .atl-header h2 a {
   font-size: 0.16rem;
   font-weight: 700;
-  line-height: 0.2rem;
 }
 
 
@@ -317,18 +317,15 @@ div{
 .fcc-md-8, .fcc-md-9, .fcc-md-10, .fcc-md-11, .fcc-md-12, .fcc-md, .fcc-md-auto {
   position: relative;
   margin-top: 0.2rem;
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
+  /* margin-left: 0.1rem; */
+  /* margin-right: 0.1rem; */
 }
 @media (min-width: 576px) {
-  .content {
-    max-width: 5.4rem;
-  }
-  .site-menu ul:first-child{
-    display: block;
-  }
-  .site-menu ul:last-child{
-    display: none;
+  /* .content {
+    max-width: 5.6rem;
+  } */
+  .fcc-article{
+    padding: 0.2rem;
   }
   .fcc-row{
     display: -webkit-box;
@@ -337,14 +334,24 @@ div{
   }
   .fcc-md-8{
     width: 66.666667%;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
   }
   .fcc-md-4{
-    width: 33.333333%
+    width: 33.333333%;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
   }
 }
 @media (min-width: 768px) {
   .content {
     max-width: 7.2rem;
+  }
+  .site-menu ul:first-child{
+    display: block;
+  }
+  .site-menu ul:last-child{
+    display: none;
   }
 }
 @media (min-width: 992px) {
