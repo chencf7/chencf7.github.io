@@ -266,13 +266,20 @@ div{
   background: #fff;
 }
 .fcc-article{
+  position: relative;
   margin: 0 0 0.1rem 0;
   padding: 0.1rem;
+  overflow: hidden;
+}
+.fcc-article:focus .alt-more a, .fcc-article:hover .alt-more a {
+  right: 0;
+  opacity: 0.7;
 }
 .fcc-article a{
   color: #000;
   text-decoration: none;
 }
+
 .atl-thumbnail {
   position: relative;
   /* float: left; */
@@ -301,6 +308,25 @@ div{
   font-size: 0.16rem;
   font-weight: 700;
 }
+.atl-description{
+  margin-bottom: 0.2rem;
+}
+.alt-more a{
+  display: block;
+  position: absolute;
+  right: -0.82rem;
+  bottom: 0.1rem;
+  padding: 0 0.12rem;
+  border-radius: 0.15rem 0 0 0.15rem;
+  line-height: 0.28rem;
+  color: #fff;
+  background: #028ad8;
+  opacity: 0;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s;
+}
 
 
 /**************************************************
@@ -316,7 +342,7 @@ div{
 .fcc-md-1, .fcc-md-2, .fcc-md-3, .fcc-md-4, .fcc-md-5, .fcc-md-6, .fcc-md-7, 
 .fcc-md-8, .fcc-md-9, .fcc-md-10, .fcc-md-11, .fcc-md-12, .fcc-md, .fcc-md-auto {
   position: relative;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   /* margin-left: 0.1rem; */
   /* margin-right: 0.1rem; */
 }
