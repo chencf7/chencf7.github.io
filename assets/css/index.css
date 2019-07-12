@@ -6,7 +6,7 @@ body{
   font-weight: 300;
   font-family: "msyh","Microsoft YaHei","微软雅黑";
   /* background: #f1f1f1; */
-  background: #ebeef2;
+  background: #fff;
   color: #000;
   padding: 0;
   margin: 0;
@@ -45,7 +45,7 @@ div{
   height: 0.64rem;
   border-bottom: 1px solid #ddd;
   background: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
   z-index: 1001;
 }
 .fcc-header nav{
@@ -271,6 +271,9 @@ div{
   padding: 0.1rem;
   overflow: hidden;
 }
+.fcc-article+.fcc-article{
+  border-top: 1px solid #ddd;
+}
 .fcc-article:focus .alt-more a, .fcc-article:hover .alt-more a {
   right: 0;
   opacity: 0.7;
@@ -289,13 +292,14 @@ div{
   overflow: hidden;
 }
 .atl-thumbnail .category{
-   background: #3690cf;
-   border-top-left-radius: 5px;
+  display: inline-block;
+  background: #3690cf;
+  /* border-top-left-radius: 5px; */
 }
 .atl-thumbnail .category a {
   color: #fff;
-  /* line-height: 0.28rem; */
-  padding: 0 10px;
+  line-height: 0.22rem;
+  padding: 0 0.1rem;
 }
 .atl-header::after{
   content: ".";
@@ -350,9 +354,9 @@ div{
   /* .content {
     max-width: 5.6rem;
   } */
-  .fcc-article{
+  /* .fcc-article{
     padding: 0.2rem;
-  }
+  } */
   .fcc-row{
     display: -webkit-box;
     display: -ms-flexbox;
