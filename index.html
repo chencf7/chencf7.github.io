@@ -20,7 +20,8 @@
   <!-- End Jekyll SEO tag -->
   <link rel="stylesheet" href="./assets/css/index.css" type="text/css" />
 </head>
-<!-- ontouchstart 兼容ios浏览器 -->
+<!-- ontouchstart 兼容ios浏览器，或者在js内部添加监听函数
+  document.body.addEventListener('touchstart',function(){}); -->
 <body ontouchstart>
   <div>
     <div class="fcc-header">
@@ -95,10 +96,17 @@
               <div class="atl-content">
                 <div class="atl-description">十六大精神力的健康圣诞快乐圣诞快乐就上的胜利肯德基</div>
                 <span class="title-l"></span> 
-                <span class="entry-meta">
-                  <p class="category"><a href="#">技术分享</a></p>
-                  <span class="date">2019年2月16日</span>
-                  <span class="views"><i class="be be-eye"></i> 1,585 °C</span>
+                <span class="atl-meta">
+                  <p class="atl-meta-cate"><a href="#">技术分享</a></p>
+                  <p class="atl-meta-cate"><a href="#">原生javascript</a></p>
+                  <p class="atl-meta-group">
+                    <span class="date">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-rili"></use>
+                      </svg>&nbsp;2019年2月16日
+                    </span>
+                    <span class="views"></span>
+                  </p>
                 </span>
               </div>
               <span class="alt-more">
@@ -118,10 +126,17 @@
                 <div class="atl-content">
                   <div class="atl-description">十六大精神力的健康圣诞快乐圣诞快乐就上的胜利肯德基</div>
                   <span class="title-l"></span> 
-                  <span class="entry-meta">
-                    <p class="category"><a href="#">技术分享</a></p>
-                    <span class="date">2019年2月16日</span>
-                    <span class="views"><i class="be be-eye"></i> 1,585 °C</span>
+                  <span class="atl-meta">
+                    <p class="atl-meta-cate"><a href="#">技术分享</a></p>
+                    <p class="atl-meta-cate"><a href="#">原生javascript</a></p>
+                    <p class="atl-meta-group">
+                      <span class="date">
+                        <svg class="icon" aria-hidden="true">
+                          <use xlink:href="#icon-rili"></use>
+                        </svg>&nbsp;2019年2月16日
+                      </span>
+                      <span class="views"></span>
+                    </p>
                   </span>
                 </div>
                 <span class="alt-more">

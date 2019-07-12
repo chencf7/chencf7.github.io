@@ -21,7 +21,7 @@ div{
 .icon {
   width: 1em;
   height: 1em;
-  vertical-align: -0.15em;
+  /* vertical-align: -0.15em; */
   fill: currentColor;
   overflow: hidden;
   /* font-size: 0.16rem; */
@@ -314,6 +314,29 @@ div{
 }
 .atl-description{
   margin-bottom: 0.2rem;
+}
+.atl-meta{
+  font-size: 0.12rem;
+}
+.atl-meta-cate{
+  display: inline-block;
+  padding: 1px 0.1rem;
+  margin-bottom: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.atl-meta-cate:hover{
+  background-color: #3690cf;
+  border-color: transparent;
+}
+.atl-meta-cate:hover a{
+  color: #fff;
+}
+.atl-meta-group .date{
+  color: #adadad;
 }
 .alt-more a{
   display: block;
