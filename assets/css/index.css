@@ -281,6 +281,7 @@ div{
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  overflow: hidden;
 }
 .slider-wrapper{
   width: 100%;
