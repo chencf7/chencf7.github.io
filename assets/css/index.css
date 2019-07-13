@@ -37,8 +37,8 @@ div{
 }
 
 /**************************************************
-网站导航栏 
-***************************************************/
+ 网站导航栏 
+ */
 .fcc-header{
   position: fixed;
   width: 100%;
@@ -255,8 +255,8 @@ div{
 }
 
 /**************************************************
-网站内容页
-***************************************************/
+ 网站内容页
+*/
 .fcc-content{
   padding-top: 0.64rem;
 }
@@ -265,15 +265,22 @@ div{
 .bg-white{
   background: #fff;
 }
-/* 主页slider样式 */
+
+/**************************************************
+ 主页slider样式 
+ */
 .fcc-slider{
-  height: 2.4rem;
+  height: 1.8rem;
   width: 100%;
 }
 .slider-container{
   position: relative;
   height: 100%;
   width: 100%;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .slider-wrapper{
   width: 100%;
@@ -291,9 +298,28 @@ div{
   font-size: 0.4rem;
   color: #fff;
 }
+.slider-pagination{
+  position: absolute;
+  bottom: 0.1rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.slider-bullet{
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  margin: 0 4px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+/**************************************************
+ end-主页slider样式 
+ */
 
-
-/* 主页文章card样式 */
+/**************************************************
+ 主页文章card样式
+ */
 .fcc-article{
   position: relative;
   margin: 0 0 0.1rem 0;
@@ -405,9 +431,6 @@ div{
   /* .content {
     max-width: 5.6rem;
   } */
-  /* .fcc-article{
-    padding: 0.2rem;
-  } */
   .fcc-row{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -433,6 +456,9 @@ div{
   }
   .site-menu ul:last-child{
     display: none;
+  }
+  .fcc-slider{
+    height: 2.4rem;
   }
 }
 @media (min-width: 992px) {
