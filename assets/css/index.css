@@ -287,6 +287,8 @@ div{
   width: 100%;
   height: 100%;
   display: flex;
+  transition-timing-function: ease;
+  transition-duration: 300ms;
 }
 .slider-item{
   width: 100%;
