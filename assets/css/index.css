@@ -265,6 +265,15 @@ div{
 .bg-white{
   background: #fff;
 }
+.fcc-announcement{
+  margin-top: 5px;
+  margin-bottom: -5px;
+  padding: 0 0.1rem;
+}
+.fcc-announcement .icon{
+  font-size: 0.16rem;
+  vertical-align: -0.16em;
+}
 
 /**************************************************
  主页slider样式 
