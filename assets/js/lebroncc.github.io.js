@@ -37,7 +37,9 @@
       sliderdom.addEventListener('touchend', handleEndFunc, false);
       sliderdom.addEventListener('touchmove', handleMoveFunc, false);
       //function handleStartFunc(){}
-      function handleEndFunc(){}
+      function handleEndFunc(){
+        
+      }
       function handleMoveFunc(event){
         // clientX、clientY 点击位置距离当前body可视区域的x，y坐标
         var points = event.changedTouches[0];

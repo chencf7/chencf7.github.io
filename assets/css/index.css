@@ -322,8 +322,13 @@ div{
   height: 8px;
   width: 8px;
   margin: 0 4px;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 50%;
+  opacity: 0.2;
+}
+.slider-bullet-active{
+  background: #fff;
+  opacity: 1;
 }
 /**************************************************
  end-主页slider样式 
