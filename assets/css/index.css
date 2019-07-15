@@ -15,6 +15,14 @@ div, section, p, header, footer, nav, ul, li, dl, dt, dd, h1,h2,h3,h4,h5{
   padding:0;
   margin:0;
 }
+input, select{
+  padding: 0;
+  margin: 0;
+  line-height: 0.22rem;
+  font-size: 0.14rem;
+  outline: none;
+  border: none;
+}
 div{
   box-sizing: border-box;
 }
@@ -97,11 +105,15 @@ div{
   background: #3690cf;
   color: #ffffff;
 }
-.fcc-menuitem:focus .fcc-dp-menuitem, .fcc-menuitem:hover .fcc-dp-menuitem{
-  display: block;
+.fcc-mobile-menuitem{
+  position: relative;
+  font-size: 0.18rem;
 }
 .fcc-mobile-menuitem:focus, .fcc-mobile-menuitem:hover{
   color: #3690cf;
+}
+.fcc-menuitem:focus .fcc-dp-menuitem, .fcc-menuitem:hover .fcc-dp-menuitem{
+  display: block;
 }
 .fcc-dp-menuitem{
   display: none;
