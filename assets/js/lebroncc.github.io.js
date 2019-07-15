@@ -50,16 +50,12 @@
               sliderwpel.style.transform='translate3d(0,0,0)';
             }else{
               // 向左滑动
-              sliderpad = points.clientX-sliderwidth;
-              if(sliderpad<=-(sliderwidth/2)){
+              sliderpad = startx-points.clientX;
+              if(sliderpad>sliderwidth/2){
                 sliderpad=-sliderwidth;
-                currentslider=1;  //季度当前所在的位置
-
+                currentslider=1;  //记录当前所在的位置
                 // 移除active bullet，添加至相应的bullet为active
-                var bullets = document.getElementsByClassName('slider-bullet');
-                var bulletsArr = Array.prototype.slice.call(bullets);
-                bulletsArr[0].className='slider-bullet';
-                bulletsArr[1].className+=' slider-bullet-active';
+                changeActiveBullet(1, 0);
               }else sliderpad=0;
               sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
             }
@@ -68,38 +64,46 @@
           }
           if(currentslider==1){
             if(points.clientX>=directx){
-              // 向右滑动，恢复至第一张轮播
               sliderpad = points.clientX-startx;
-              if(sliderpad>(sliderwidth/2)){
-                sliderwpel.style.transform='translate3d(0,0,0)';
+              if(sliderpad>sliderwidth/2){
+                // 向右滑动，恢复至第一张轮播
+                sliderpad=0;
                 currentslider=0;
-                
-                var bullets = document.getElementsByClassName('slider-bullet');
-                var bulletsArr = Array.prototype.slice.call(bullets);
-                bulletsArr[1].className='slider-bullet';
-                bulletsArr[0].className+=' slider-bullet-active';
-              }else{
-                sliderwpel.style.transform='translate3d('+(-sliderwidth)+'px,0,0)';
-              }
+                changeActiveBullet(0, 1);
+              }else sliderpad=-sliderwidth;
+              sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
             }else{
               // 向左滑动
-              sliderpad = points.clientX-sliderwidth;
-              if(sliderpad<=-(sliderwidth/2)){
+              sliderpad = startx-points.clientX;
+              if(sliderpad>sliderwidth/2){
                 sliderpad=-2*sliderwidth;
-                currentslider=3;  //季度当前所在的位置
-
-                // 移除active bullet，添加至相应的bullet为active
-                var bullets = document.getElementsByClassName('slider-bullet');
-                var bulletsArr = Array.prototype.slice.call(bullets);
-                bulletsArr[1].className='slider-bullet';
-                bulletsArr[2].className+=' slider-bullet-active';
-              }else sliderpad=0;
+                currentslider=2;  //记录当前所在的位置
+                changeActiveBullet(2, 1)
+              }else sliderpad=-sliderwidth;
               sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
             }
             startx=directx=0;
             return;
           }
-          
+          if(currentslider==2){
+            if(points.clientX>=directx){
+              // 向右滑动，恢复至1
+              sliderpad = points.clientX-startx;
+              // 滑动距离超过sliderwidth的1/2时，切换到1
+              if(sliderpad>sliderwidth/2){
+                sliderpad=-sliderwidth;
+                currentslider=1;
+                changeActiveBullet(1, 2);
+              }else sliderpad=-2*sliderwidth;
+              sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
+            }else{
+              // 向左滑动，仍显示当前页
+              sliderpad=-2*sliderwidth;
+              sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
+            }
+            startx=directx=0;
+            return;
+          }
         }
         function handleMoveFunc(event){
           // clientX、clientY 点击位置距离当前body可视区域的x，y坐标
@@ -111,12 +115,18 @@
               sliderpad = points.clientX-startx;
               if(sliderpad>(sliderwidth/2)){
                 sliderpad=sliderwidth/2;
-              }else
-                sliderpad=points.clientX;
+              }
             }
             if(currentslider==1){
               sliderpad = sliderwidth-(points.clientX-startx);
               if(sliderpad<0) {sliderpad=0;}
+              else{
+                sliderpad=-sliderpad;
+              }
+            }
+            if(currentslider==2){
+              sliderpad = 2*sliderwidth-(points.clientX-startx);
+              if(sliderpad<sliderwidth) {sliderpad=-sliderwidth;}
               else{
                 sliderpad=-sliderpad;
               }
@@ -136,6 +146,13 @@
               }else
                 sliderpad=sliderpad+(-sliderwidth);
             }
+            if(currentslider==2){
+              sliderpad = points.clientX-startx;
+              if(sliderpad>(sliderwidth/2)){
+                sliderpad=sliderwidth/2;
+              }
+              sliderpad=-(3*sliderwidth+sliderpad);
+            }
           }
           sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
         }
@@ -144,6 +161,14 @@
       // 支持鼠标事件
       if("onmousestart" in window){
 
+      }
+
+      function changeActiveBullet(active, inactive){
+        // 移除active bullet，添加至相应的bullet为active
+        var bullets = document.getElementsByClassName('slider-bullet');
+        var bulletsArr = Array.prototype.slice.call(bullets);
+        bulletsArr[inactive].className='slider-bullet';
+        bulletsArr[active].className+=' slider-bullet-active';
       }
     })();
     // end-Slider图片滑动轮播事件方法
