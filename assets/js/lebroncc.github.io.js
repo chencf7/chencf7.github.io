@@ -40,15 +40,28 @@
         sliderdom.addEventListener('touchmove', handleMoveFunc, false);
         function handleStartFunc(event){
           var points = event.changedTouches[0];
-          startx=points.clientX;
-          directx=points.clientX;
-          console.log(directx);
+          startx=directx=points.clientX;
         }
         function handleEndFunc(event){
           if(currentslider==0){
             var points = event.changedTouches[0];
             if(points.clientX>=directx){
+              // 向右滑动，恢复至0
               sliderwpel.style.transform='translate3d(0,0,0)';
+            }else{
+              // 向左滑动
+              sliderpad = points.clientX-sliderwidth;
+              if(sliderpad<=-sliderwidth){
+                sliderpad=-sliderwidth;
+                currentslider=1;  //季度当前所在的位置
+
+                // 移除active bullet，添加至相应的bullet为active
+                var bullets = document.getElementsByClassName('slider-bullet');
+                var bulletsArr = Array.prototype.slice.call(bullets);
+                bulletsArr[0].className='slider-bullet';
+                bulletsArr[1].className+=' slider-bullet-active';
+              }else sliderpad=0;
+              sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
             }
           }
           startx=directx=0;
@@ -59,16 +72,28 @@
           // console.log(points.clientX);
           if(points.clientX>=directx){
             //向右滑动
-            sliderpad = points.clientX-startx;
             if(currentslider==0){
+              sliderpad = points.clientX-startx;
               if(sliderpad>(sliderwidth/2)){
                 sliderpad=sliderwidth/2;
               }else
                 sliderpad=points.clientX;
             }
+            if(currentslider==1){
+              sliderpad = sliderwidth-(points.clientX-startx);
+              if(sliderpad<0) {sliderpad=0;}
+              else{
+                sliderpad=-sliderpad;
+              }
+            }
           }else{
             //向左滑动
-            sliderpad = points.clientX-sliderwidth;
+            if(currentslider==0){
+              sliderpad = points.clientX-sliderwidth;
+              if(sliderpad<=-sliderwidth){
+                sliderpad=-sliderwidth;
+              }
+            }
           }
           sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
         }

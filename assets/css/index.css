@@ -310,6 +310,12 @@ div{
   font-size: 0.4rem;
   color: #fff;
 }
+.slider-item img{
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
 .slider-pagination{
   position: absolute;
   bottom: 0.1rem;
