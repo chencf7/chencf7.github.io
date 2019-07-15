@@ -51,7 +51,7 @@
             }else{
               // 向左滑动
               sliderpad = points.clientX-sliderwidth;
-              if(sliderpad<=-(sliderwidth*2/3)){
+              if(sliderpad<=-(sliderwidth/2)){
                 sliderpad=-sliderwidth;
                 currentslider=1;  //季度当前所在的位置
 
