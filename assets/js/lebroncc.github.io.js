@@ -43,8 +43,8 @@
           startx=directx=points.clientX;
         }
         function handleEndFunc(event){
+          var points = event.changedTouches[0];
           if(currentslider==0){
-            var points = event.changedTouches[0];
             if(points.clientX>=directx){
               // 向右滑动，恢复至0
               sliderwpel.style.transform='translate3d(0,0,0)';
@@ -63,14 +63,49 @@
               }else sliderpad=0;
               sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
             }
+            startx=directx=0;
+            return;
           }
-          startx=directx=0;
+          if(currentslider==1){
+            if(points.clientX>=directx){
+              // 向右滑动，恢复至第一张轮播
+              sliderpad = points.clientX-startx;
+              if(sliderpad>(sliderwidth/2)){
+                sliderwpel.style.transform='translate3d(0,0,0)';
+                currentslider=0;
+                
+                var bullets = document.getElementsByClassName('slider-bullet');
+                var bulletsArr = Array.prototype.slice.call(bullets);
+                bulletsArr[1].className='slider-bullet';
+                bulletsArr[0].className+=' slider-bullet-active';
+              }else{
+                sliderwpel.style.transform='translate3d('+(-sliderwidth)+'px,0,0)';
+              }
+            }else{
+              // 向左滑动
+              sliderpad = points.clientX-sliderwidth;
+              if(sliderpad<=-(sliderwidth/2)){
+                sliderpad=-2*sliderwidth;
+                currentslider=3;  //季度当前所在的位置
+
+                // 移除active bullet，添加至相应的bullet为active
+                var bullets = document.getElementsByClassName('slider-bullet');
+                var bulletsArr = Array.prototype.slice.call(bullets);
+                bulletsArr[1].className='slider-bullet';
+                bulletsArr[2].className+=' slider-bullet-active';
+              }else sliderpad=0;
+              sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
+            }
+            startx=directx=0;
+            return;
+          }
+          
         }
         function handleMoveFunc(event){
           // clientX、clientY 点击位置距离当前body可视区域的x，y坐标
           var points = event.changedTouches[0];
           // console.log(points.clientX);
-          if(points.clientX>=directx){
+          if(points.clientX>directx){
             //向右滑动
             if(currentslider==0){
               sliderpad = points.clientX-startx;
@@ -86,13 +121,20 @@
                 sliderpad=-sliderpad;
               }
             }
-          }else{
+          }else if(points.clientX<directx){
             //向左滑动
             if(currentslider==0){
               sliderpad = points.clientX-sliderwidth;
               if(sliderpad<=-sliderwidth){
                 sliderpad=-sliderwidth;
               }
+            }
+            if(currentslider==1){
+              sliderpad = points.clientX-sliderwidth;
+              if(sliderpad<=-sliderwidth){
+                sliderpad=-2*sliderwidth;
+              }else
+                sliderpad=sliderpad+(-sliderwidth);
             }
           }
           sliderwpel.style.transform='translate3d('+sliderpad+'px,0,0)';
