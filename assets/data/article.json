@@ -7,7 +7,7 @@
 },{
   "title": "js实现瀑布流网站加载",
   "content": "滚动时动态加载图片，监听图片加载完成获取泳道的高度，每次加载计算...",
-  "tag": "js",
+  "tag": "js；图片加载",
   "time": "2019年6月10日",
   "url": "./dialy-practise/201906/2-waterfall.html"
 }]

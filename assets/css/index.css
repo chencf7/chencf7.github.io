@@ -418,6 +418,7 @@ div{
 .atl-meta-cate{
   display: inline-block;
   padding: 1px 0.1rem;
+  margin-right: 5px;
   margin-bottom: 3px;
   border-width: 1px;
   border-style: solid;

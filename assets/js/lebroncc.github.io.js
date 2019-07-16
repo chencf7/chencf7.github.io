@@ -200,7 +200,12 @@
             title.href=data[i].url;
 
             tplclone.querySelector('.atl-description').innerHTML=data[i].content;
-            var tag = '<p class="atl-meta-cate"><a href="#">'+data[i].tag+'</a></p>';
+            
+            var tagarr = data[i].tag.split('；');
+            var tag = '';
+            for(var j=0;j<tagarr.length;j++){
+              tag+='<p class="atl-meta-cate"><a href="#">'+tagarr[j]+'</a></p>';
+            }
             tplclone.querySelector('.atl-meta').insertAdjacentHTML('afterbegin', tag);
             tplclone.querySelector('.date').innerHTML+=data[i].time;
             // 出入指内容div
