@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{ margin: 0; }
+        #header{
+            height: 50px;
+            width: 100%;
+            background-color: chartreuse;
+        }
+        #content{
+            margin: 0 200px;
+            /*display: flex;*/
+        }
+
+        #content::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #main{
+            width: 100%;
+            min-width: 100px;
+            min-height: 500px;
+            float: left;
+            background-color: cyan;
+        }
+        #left{
+            width: 200px;
+            height: 500px;
+            float: left;
+            background-color: pink;
+            margin-left: -100%;
+            position:relative;
+            left:-200px;
+        }
+        #right{
+            width: 200px;
+            height: 500px;
+            float: left;
+            background-color: pink;
+            margin-left: -200px;
+            position:relative;
+            right:-200px;
+        }
+        #footer{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="content">
+        <div id="main"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+    </div>
+    <div id="footer">
+        <div style="width: 500px; height: 200px; background-color: darkcyan;"></div>
+        <div>
+            <div style="width:300px; height: 100px;"></div>
+            <div style="position: absolute; left:0px; top: 0px;">12333</div>
+        </div>
+    </div>
+</body>
+</html>

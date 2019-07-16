@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .social {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            height: 526px;
+        }
+        .social-img{
+            height: 100%;
+            width: 680px;
+            margin: 0 auto;
+        }
+        .socialimg, .socialimg02, .socialimg03 {
+            display: inline-block;
+            -webkit-transform-origin: center center;
+            -ms-transform-origin: center center;
+            transform-origin: center center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="social">
+    <div class="social-img">
+        <img src="images/logo.png" alt="社交" hspace="10" align="left" usemap="#socialmap" border="0">
+        <div alt="企业微信" class="socialimg" href="www.baidu.com" style="width: 100px; height: 100px; float: left; margin-top: 78px; margin-left: -608px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img style="margin-top: 14px;margin-left: 1px;" src="images/006.png">
+        </div>
+        <div class="socialimg" alt="百科问答" href="social/wiki.html" style="width: 109px; height: 95px; float: left; margin-top: -319px; margin-left: 230px; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg); position: relative;">
+            <img src="images/001.png">
+        </div>
+        <div class="socialimg" alt="分享社区" href="social/share.html" style="width: 85px; height: 73px; float: left; margin-top: -361px; margin-left: 308px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/002.png">
+        </div>
+        <div class="socialimg03" alt="同事圈" href="social/colleagues.html" style="width:104px;height:93px;float: left;margin-top: -296px;margin-left: 379px;position: relative;">
+            <img src="images/0011.png">
+        </div>
+        <div class="socialimg02" alt="人力资源卡片" href="social/hrm.html" style="width:96px;height:81px;float: left;margin-top: -259px;margin-left: 486px;position: relative;">
+            <img src="images/008.png">
+        </div>
+        <div class="socialimg03" alt="全能通讯录" href="social/addr.html" style="width:80px;height:69px;float: left;margin-top: -390px;margin-left: 594px;left: 0px; top: 0px;position: relative;transform: rotate(0deg);">
+            <img src="images/007.png">
+        </div>
+        <div class="socialimg03" alt="个人日程" href="social/schedule.html" style="width: 81px; height: 81px; float: left; margin-top: -228px; margin-left: 331px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/003.png">
+        </div>
+        <div class="socialimg02" alt="时间面板" href="social/time.html" style="width: 100px; height: 104px; float: left; margin-top: -209px; margin-left: 211px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img style="margin-top: 17px;margin-left: -2px;" src="images/009.png">
+        </div>
+        <div class="socialimg" alt="协作区" href="social/community.html" style="width: 107px; height: 96px; float: left; margin-top: -201px; margin-left: 112px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/0012.png">
+        </div>
+        <div class="socialimg02" alt="专家网络" href="social/expert.html" style="width: 100px; height: 89px; float: left; margin-top: -115px; margin-left: 268px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/0013.png">
+        </div>
+        <div class="socialimg03" alt="工作微博" href="social/blog.html" style="width:94px;height:82px;float: left;margin-top: -164px;position: relative;margin-left: 464px;">
+            <img src="images/004.png">
+        </div>
+        <div class="socialimg02" alt="讨论圈" href="social/discuss.html" style="width: 78px; height: 71px; float: left; margin-top: -52px; margin-left: 365px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/0010.png">
+        </div>
+        <div class="socialimg03" alt="即时通讯" href="social/im.html" style="width: 84px; height: 77px; float: left; margin-top: -63px; margin-left: 229px; position: relative; left: 0px; top: 0px; opacity: 1; transform: rotate(0deg);">
+            <img src="images/005.png">
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var timeintervalid = null;
+        $(".socialimg, .socialimg02, .socialimg03").mouseover(function () {
+            var $that = $(this);
+            timeintervalid = setInterval(function () {
+                var randomnum = Math.random();
+                var pxrd = Math.round(8-(randomnum*16));
+                var opacityrd = randomnum>=1.5?randomnum:(randomnum+0.5);
+                opacityrd = Math.round(opacityrd*1000)/1000;
+                var transformrd = Math.round(1-(randomnum*2));
+                if($that.attr("class") == "socialimg")
+                    $that.css("left", pxrd+"px")
+                        .css("opacity", opacityrd)
+                        .css("transform", "rotate(" + transformrd + "deg)");
+                else if($that.attr("class") == "socialimg02")
+                    $that.css("top", pxrd+"px")
+                        .css("opacity", opacityrd)
+                        .css("transform", "rotate(" + transformrd + "deg)");
+                else {
+                    transformrd = Math.round(10-(randomnum*20));
+                    $that.css("opacity", opacityrd)
+                        .css("transform", "rotate(" + transformrd + "deg)");
+                }
+            }, 80);
+        }).mouseout(function () {
+            if(timeintervalid)
+                clearInterval(timeintervalid);
+            var $that = $(this);
+            $that.css("top", "0px")
+                .css("left", "0px")
+                .css("opacity", 1)
+                .css("transform", "rotate(0deg)");
+        }).click(function () {
+            window.open("http://" + $(this).attr("href"));
+        });
+    })
+</script>
+</html>

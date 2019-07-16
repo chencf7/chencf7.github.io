@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .content{
+            display: flex;
+        }
+        .div1{
+            width: 300px;
+            background-color: pink;
+        }
+        .div2{
+            width: 500px;
+            background-color: cyan;
+        }
+        .content1{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .content1:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .content1 .div1{
+            float: left;
+        }
+        .content1 .div2{
+            float: left;
+        }
+        .content2{
+            overflow:hidden;
+            margin-bottom: 20px;
+        }
+        .content2 .div1{
+            float: left;
+            min-height: 200px;
+            margin-bottom: -300px;
+            padding-bottom: 300px;
+        }
+        .content2 .div2{
+            float: left;
+            margin-bottom: -300px;
+            padding-bottom: 300px;
+        }
+        .div3{
+            background-color: burlywood;
+            height: 50px;
+            width: 500px;
+            float: left;
+            margin-bottom: -500px;
+            padding-bottom: 500px;
+        }
+        .div4{
+            background-color: chartreuse;
+            float: left;
+            margin-bottom: -500px;
+            padding-bottom: 500px;
+        }
+        .div5{
+            background-color: darkgreen;
+            float: left;
+            margin-bottom: -500px;
+            padding-bottom: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="div1">12333</div>
+        <div class="div2">
+            4444
+            <br>
+            rrrr
+            <br>
+            88888
+        </div>
+    </div>
+    <div class="content1">
+        <div class="div2">12333</div>
+        <div class="div1">
+            4444
+            <br>
+            rrrr
+        </div>
+    </div>
+    <div class="content2">
+        <div class="div1">我是div1</div>
+        <div class="div2">
+            我是div2
+            <br>
+            rrrr
+            <br>
+            88888
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div style="overflow: hidden;">
+        <div class="div3">
+            我是一个div33333333啊，但是不知道在哪里,ceshi
+        </div>
+        <div class="div4">
+            我是一个div44444444啊，但是不知道在哪里
+        </div>
+        <div class="div5">
+            尼玛aaaaa，我也不知道时怎么回事。。。。。。。。。。。。。。
+        </div>
+    </div>
+    <!--<div>-->
+        <!--上一个div的margin-bottom为负很多......-->
+    <!--</div>-->
+</body>
+</html>
