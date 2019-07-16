@@ -1,7 +1,13 @@
 [{
   "title": "纯css实现圆形、三角形、扇形、菱形...",
-  "content": "",
+  "content": "主要使用css border，border-radius，transform来实现...",
   "tag": "css",
   "time": "2019年6月7日",
   "url": "./dialy-practise/201906/1-cssshape.html"
+},{
+  "title": "js实现瀑布流网站加载",
+  "content": "滚动时动态加载图片，监听图片加载完成获取泳道的高度，每次加载计算...",
+  "tag": "js",
+  "time": "2019年6月10日",
+  "url": "./dialy-practise/201906/2-waterfall.html"
 }]
