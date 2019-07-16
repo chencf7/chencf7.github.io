@@ -1,0 +1,259 @@
+<!--
+  2019-06-01
+  瀑布流布局
+  1，图片append后加载的onload会异步，因此造成一次横向添加图片后，append第二行时，无法读取第一行最后的高度
+  解决方案：
+    因无法确定瀑布流每条泳道每行图片最后结束的位置
+    提前append图片至瀑布流，设置图片初始位置为网页可视窗口的外面，然后等待图片加载完成后
+    再次计算瀑布流每条泳道最后的位置
+-->
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <title>瀑布流</title>
+  <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
+  <script type="text/javascript">
+    // 扩展数组方法，获取数组内部最小的内容
+    if(Array.prototype.ctMin==undefined){
+      Array.prototype.ctMin=function(property){
+        var _that=this;
+        var rmin=_that[0];
+        if(property in rmin){
+          for(var i=1;i<_that.length;i++){
+            if(_that[i][property]<rmin[property]){
+              rmin=_that[i];
+            }
+          }
+          return rmin;
+        }else{
+          return null;
+        }
+      }
+    }
+
+    // 向上级遍历dom树，获取符合条件最近的dom节点
+    // el：开始dom节点，target：目标dom节点，type：类型（tagname、class）
+    function similarJQueryClosest(el, target, type){
+      if(!el) return null;
+      var startnode = null;
+      if(typeof el === 'string'){
+        startnode=document.querySelector(el);
+      }else if(typeof el === 'object'){
+        startnode=el;
+      }
+      
+      if(startnode){
+        var targetnode = null;
+        var parentnode = startnode.parentElement || startnode.parentNode;
+        while(parentnode){  //至body，html，null
+          if(type === 'class'){
+            if(parentnode.className&&parentnode.className.indexOf(target)>=0){
+              targetnode = parentnode;
+              break;
+            }
+          }
+          parentnode=parentnode.parentElement || parentnode.parentNode;
+        }
+        return targetnode;
+      }else{
+        return null;
+      }
+    }
+
+    (function(window){
+      // 图片描述的默认固定高度
+      const DESP_HEIGHT=65;
+
+      const fallNums=3;
+      const fallPoints=[];
+      var laneWidth=0;
+      var scrollSetTimeout=null;
+    
+      //一个html页面，当DOM构建完成后，只有其他需要加载的资源，eg：图片、样式表全部加载完成后才会触发onload
+      window.onload=function(){
+        console.log('page onload');
+        var container=document.querySelector('.ct-container');
+        var ctnwidth=+container.clientWidth;
+        // 瀑布流每条泳道的宽度
+        laneWidth=Math.round(ctnwidth/fallNums);
+        // getWftemplateContent("wKgtub.jpg@!rw17.jpg");
+        
+        if(typeof XMLHttpRequest!='undefined'){
+          var xmlhr = new XMLHttpRequest();
+          // 请求类型，请求地址，是否异步
+          xmlhr.open('GET', './src/data/wf_data.json', true);
+          xmlhr.onreadystatechange=function(res){
+            if(xmlhr.readyState===4){
+              if(xmlhr.status===200){
+                var data = JSON.parse(xmlhr.responseText);
+                appendWfdatatoHtml(data);
+              }
+            }
+          }
+          xmlhr.send();
+        }
+
+        // console.log(fallPoints);
+      }
+
+      //当初始的html文档被完全加载和解析完成后，DOMContentLoaded事件被触发，无需等待样式表，图像等加载
+      document.addEventListener('DOMContentLoaded', function(){
+        console.log('page DOMContentLoaded');
+      });
+
+
+
+      // 屏幕窗口滚动事件监听
+      window.onscroll=function(){
+        var minlane = fallPoints.ctMin("y");
+        // .scrollTop 解释：元素滚动条内的顶部隐藏部分的高度。
+        // .scrollHeight 解释：元素滚动条内的内容高度，滚动过程中高度不变
+        var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+        var browsercontentheight = window.innerHeight;
+        // console.log(minlane["y"], scrolltop+browsercontentheight);
+        if(minlane["y"]<(scrolltop+browsercontentheight)){
+          if(scrollSetTimeout){
+            clearTimeout(scrollSetTimeout);
+            scrollSetTimeout=null;
+          }else{
+            scrollSetTimeout=setTimeout(function(){
+              if(typeof XMLHttpRequest!='undefined'){
+                console.log("执行次数标记。");
+                var xmlhr = new XMLHttpRequest();
+                // 请求类型，请求地址，是否异步
+                xmlhr.open('GET', './src/data/wf_data.json', true);
+                xmlhr.onreadystatechange=function(res){
+                  if(xmlhr.readyState===4){
+                    if(xmlhr.status===200){
+                      var data = JSON.parse(xmlhr.responseText);
+                      appendWfdatatoHtml(data);
+                    }
+                  }
+                }
+                xmlhr.send();
+                scrollSetTimeout=null;
+              }
+            }, 500);
+          }
+        }
+      }
+
+      // 操作已请求的数据，append至html
+      function appendWfdatatoHtml(data){
+        if(data.toString() === '[object Object]'){
+          for(key of Object.keys(data)){
+            var info = data[key];
+            getWftemplateContent(info.name);
+          }
+        }
+      }
+
+      function getWftemplateContent(imgname){
+        if('content' in document.createElement('template')){
+          var t = document.querySelector(".ct-template");
+          var template = t.querySelector("template");
+
+          // 这里是template的content属性进行querySelector
+          var tpl_content=template.content;
+
+          // 设置瀑布流图片外围包裹的div的宽度
+          // var lane = 0; //记录在第几泳道
+          var wf = tpl_content.querySelector(".wf-ctner");
+          wf.style.width=laneWidth+"px";
+          // 加载时先将图片设置在视窗可见区外，方便图片加载完成，获取图片的高度
+          wf.style.left="-999px";
+          wf.style.top=0+"px";
+          /*
+          if(fallPoints.length<fallNums){
+            var col = fallPoints.length;
+            fallPoints.push({x: col*laneWidth, y: 0, lane: col});
+            
+            wf.style.left=fallPoints[col]["x"]+"px";
+            wf.style.top=0+"px";
+            lane=col;
+          }else{
+            // 瀑布流，泳道渲染满后，需要遍历计算各泳道最后的高度，高度小的先append
+            var minlane = fallPoints.ctMin("y");
+
+            wf.style.left=minlane["x"]+"px";
+            wf.style.top=minlane["y"]+"px";
+            lane=minlane.lane;
+          }
+          */
+          
+          // 设置瀑布流图片的地址
+          var img=tpl_content.querySelector("img");
+          img.src="./src/images/"+imgname;
+          // img.dataset.lanenum = lane;
+
+          var clone = document.importNode(tpl_content, true);
+          //TODO: 图片的onload监听事件必须声明在append内容前，否在报img为空的错误
+          clone.querySelector("img").onload=function(){
+            /*
+            因无法确定瀑布流每条泳道每行图片最后结束的位置
+            提前append图片至瀑布流，设置图片初始位置为网页可视窗口的外面，然后等待图片加载完成后
+            再次计算瀑布流每条泳道最后的位置
+            */
+            var _that=this;
+            // var currentlane=_that.getAttribute("data-lanenum");
+
+            // 获取当前load图片的高度
+            // var imageh = Number(_that.clientHeight);
+            // fallPoints[currentlane].y=imageh+DESP_HEIGHT;
+            if(fallPoints.length<fallNums){
+              // 当保存泳道最后的节点的数组小于泳道数目时，为第一行，一次添加图片至个泳道
+              var col = fallPoints.length;
+              fallPoints.push({x: 0, y: 0, lane: col});
+
+              fallPoints[col].x=col*laneWidth;
+              var imageh = Math.ceil(Number(_that.clientHeight));
+              fallPoints[col].y=imageh+DESP_HEIGHT;
+              // 设置瀑布流图片外层包裹div的位置
+              var wf_ctner = similarJQueryClosest(_that, 'wf-ctner', 'class');
+              wf_ctner.style.left=fallPoints[col]["x"]+"px";
+              wf_ctner.dataset.lane=col; //保存当前图片所在的泳道，从0开始
+            }else{
+              // 瀑布流各泳道铺满后，开始找查找各泳道图片节点最小的位置
+              var minlane = fallPoints.ctMin("y");
+              //debugger;
+              var wf_ctner = similarJQueryClosest(_that, 'wf-ctner', 'class');
+              wf_ctner.style.left=minlane["x"]+"px";
+              wf_ctner.style.top=minlane["y"]+"px";
+              wf_ctner.dataset.lane=minlane.lane;
+
+              var imageh = Math.ceil(Number(_that.clientHeight));
+              fallPoints[minlane.lane].y+=(imageh+DESP_HEIGHT);
+            }
+          }
+
+          document.getElementById("wf_content").appendChild(clone);
+        }
+      }
+
+    })(window);
+  </script>
+  <body>
+    <nav>
+      <div>瀑布流网站</div>
+    </nav>
+    <div id="wf_content" class="ct-container">
+      <!-- 瀑布流内容 -->
+    </div>
+    <div class="ct-template">
+      <!-- 瀑布流图片外层包裹div -->
+      <template>
+          <div class="wf-ctner clearfix">
+            <div class="image-wrapper">
+              <img src="" style="width: 100%; height: auto;" />
+            </div>
+            <div class="desp-wrapper">
+              <p class="descript">圆明园</p>
+              <div class="attribute">
+                123333
+              </div>
+            </div>
+          </div>
+      </template>
+    </div>
+  </body>
+</html>

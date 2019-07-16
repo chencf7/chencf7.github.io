@@ -172,6 +172,44 @@
       }
     })();
     // end-Slider图片滑动轮播事件方法
+
+    // artice浏览文件加载方法
+    if(window.XMLHttpRequest){
+      var xmlhttp=new XMLHttpRequest();
+      // 请求静态文件，部分服务器使用post的方式会报错405
+      xmlhttp.open('GET', '/assets/data/article.json', true);
+      xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState===4&&xmlhttp.status===200){
+          var data = JSON.parse(xmlhttp.responseText);
+          appendArticletohtml(data);
+        }
+      }
+      xmlhttp.send();
+    }
+    function appendArticletohtml(data){
+      if(Object.prototype.toString.call(data)==='[object Array]'){
+        var main = document.querySelector('.fcc-main');
+        if('content' in document.createElement('template')){
+          for(var i=0; i<data.length;i++){
+            var template = document.querySelector('#article-detail');
+            var tplcontent=template.content;
+
+            var tplclone = document.importNode(tplcontent, true);
+            var title=tplclone.querySelector('.entry-title').children[0];
+            title.innerHTML=data[i].title;
+            title.href=data[i].url;
+
+            tplclone.querySelector('.atl-description').innerHTML=data[i].content;
+            var tag = '<p class="atl-meta-cate"><a href="#">'+data[i].tag+'</a></p>';
+            tplclone.querySelector('.atl-meta').insertAdjacentHTML('afterbegin', tag);
+            tplclone.querySelector('.date').innerHTML+=data[i].time;
+            // 出入指内容div
+            main.appendChild(tplclone);
+          }
+        }
+      }
+    }
+
     
     // 调用初始化方法，浏览器不支持addEventListener时，直接在onload中执行初始化body的高度
     if(!window.addEventListener){ pageObj.pageInit(); }

@@ -1,0 +1,110 @@
+<!--
+  2019--6-1
+  使用CSS绘制几何图形（圆形、三角形、扇形、菱形等）
+-->
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title>css实现各种图形</title>
+  <style type="text/css">
+    table{
+      border: 1px solid rgb(1, 1, 1, 0.2);
+      border-collapse: collapse;
+      border-spacing: none;
+    }
+    table .header{ height: 30px; }
+    table .header>td{
+      border-bottom: 1px solid rgb(1, 1, 1, 0.2);
+      width: 200px;
+      text-align: center;
+    }
+    table .row-content>td{ 
+      border-bottom: 1px solid rgb(1, 1, 1, 0.2);
+      height: 150px;
+    }
+    .content{
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .circle{
+      border: 1px solid  rgb(233, 236, 11);
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .sanjiaoxing{
+      border:50px solid #333;/*border-width border-style border-color */
+      border-top: 0;
+      border-color: transparent transparent #333;/*透明 透明  灰，利用border:0，跟transparent区别*/
+      height: 0;
+      width: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .shanxing{
+      height: 0;
+      width: 0;
+      border-radius: 50%;
+      border-width: 50px 50px 0;
+      border-style: solid;
+      border-color: chartreuse transparent transparent;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .lingxing{
+      border: 1px solid  rgb(233, 236, 11);
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  </style>
+  <body>
+    <div>
+      <table>
+        <thead>
+        </thead>
+        <tbody>
+          <tr class="header">
+            <td>圆形</td>
+            <td>三角形</td>
+            <td>扇形</td>
+          </tr>
+          <tr class="row-content">
+            <td>
+              <div class="content"><div class="circle"></div></div>
+            </td>
+            <td>
+              <div class="content"><div class="sanjiaoxing"></div></div>
+            </td>
+            <td>
+              <div class="content"><div class="shanxing"></div></div>
+            </td>
+          </tr>
+          <tr class="header">
+            <td>菱形</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="row-content">
+              <td><div class="content"><div class="lingxing"></div></div></td>
+              <td></td>
+              <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
