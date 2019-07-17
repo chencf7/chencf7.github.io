@@ -11,7 +11,7 @@ body{
   padding: 0;
   margin: 0;
 }
-div, section, p, header, footer, nav, ul, li, dl, dt, dd, h1,h2,h3,h4,h5{
+div, section, p, header, footer, nav, ul, li, dl, dt, dd, h1,h2,h3,h4,h5, label, pre{
   padding:0;
   margin:0;
 }
@@ -28,6 +28,16 @@ hr{
   border:none;
   background-color:#f1f1f1;
   
+}
+pre{
+  width: 100%;
+  background: #282c34;
+  color: #fff;
+  font-family: Menlo,Monaco,Consolas,Courier New,monospace;
+  border: 1px solid #ccc;
+  padding: 5px;
+  overflow-x: auto;
+  border-radius: 4px;
 }
 .icon {
   width: 1em;
@@ -96,6 +106,9 @@ hr{
   }
   .fcc-slider{
     height: 2.4rem;
+  }
+  pre{
+    width: 64%;
   }
 }
 @media (min-width: 992px) {
