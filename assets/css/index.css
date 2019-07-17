@@ -26,6 +26,12 @@ input, select{
 div{
   box-sizing: border-box;
 }
+hr{
+  height:1px;
+  border:none;
+  background-color:#e6e6e6;
+  
+}
 .icon {
   width: 1em;
   height: 1em;

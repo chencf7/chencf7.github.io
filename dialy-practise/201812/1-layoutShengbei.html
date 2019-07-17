@@ -11,6 +11,42 @@
 <title>圣杯布局的实现</title>
 <link rel="stylesheet" href="../../assets/css/index.css" type="text/css" />
 <style type="text/css">
+  header{
+    height: 0.64rem;
+    width: 100%;
+    background: #cccccc;
+  }
+  .sb-body{
+    width: 100%;
+    padding: 0 2rem;
+    overflow: hidden; /* 形成BFC撑开文档 */
+  }
+  .sb-content{
+    float:left;
+    width: 100%;
+    background: #eee;
+    min-height: 3rem;
+  }
+  .left{
+    float:left;
+    width: 2rem;
+    background: cyan;
+    color:#fff;
+    min-height: 3rem;
+    margin-left: -100%;
+    position: relative;
+    left: -2rem;
+  }
+  .right{
+    float:left;
+    width: 2rem;
+    background: salmon;
+    color:#fff;
+    min-height: 3rem;
+    margin-left: -2rem;
+    position: relative;
+    right: -2rem;
+  }
 </style>
 <body ontouchstart>
   <div>
@@ -28,10 +64,33 @@
     </div>
     <div class="fcc-content content">
       <div style="margin:10px">
-        <p>圣杯布局、双飞翼布局的目的都是左右两栏固定宽度，中间部分自适应。 </p>
+        <p>圣杯布局、双飞翼布局的目的都是实现左右两栏固定宽度，中间部分自适应。 </p>
+        <p>在HTML结构上中间栏在最前面保证了最先渲染中间提升性能（在现代浏览器中这点儿性能优化效果并不是很大），并且兼容性良好。</p>
+        <hr />
+        <p><strong>实现方式：</strong></p>
+        <p>1，外部div包裹content，left， right三个div内容框，外部div设置清除浮动，以及padding</p>
+        <p>2，<span style="color:salmon">设置content，left， right浮动float:left</span>，content的width为100%
+          如果不设置，left，right设置margin-left为负值时，div不会到content这行来</p>
+        <p>3，利用浮动元素margin-left的负值，实现左、右边栏到content内容框那行去
+          （1）margin-left: -100%；<span style="color:salmon">margin的百分比是相对与父元素的</span>
+          （2）margin-left: -right的宽度
+        </p>
+        <p>4，利用绝对定位实现左、右边栏靠边</p>
+        <p>5，详情使用浏览器开发者工具查看css</p>
+        <p><strong>弊端：</strong></p>
+        <p>必须有一个最小宽度，当页面小于最小宽度时布局就会乱掉。所以最好给body设置一个min-width</p>
       </div>
     </div>
-    <div></div>
+    <div>
+      <header>头部</header>
+      <div class="sb-body">
+        <div class="sb-content">content：中间内容部分
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+      </div>
+      <footer>结束部分</footer>
+    </div>
   </div>
 </body>
 </html>
