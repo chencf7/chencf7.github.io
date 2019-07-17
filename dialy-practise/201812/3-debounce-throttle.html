@@ -10,13 +10,10 @@
 <style type="text/css">
 </style>
 <script type="text/javascript">
-  
+  // 防抖
   function debounce(func, wait, immediate) {
     // 使用闭包，防止timerId被污染，并且可记录timerId未丢失
-    var timerId,
-      _args,
-      _that;
-
+    var timerId, _args, _that;
     if (typeof func != 'function') {
       throw new TypeError(FUNC_ERROR_TEXT);
     }
@@ -43,6 +40,29 @@
     return debounced;
   }
 
+  function throttle(func, wait, immediate) {
+    // 使用闭包，防止timerId被污染，并且可记录timerId未丢失
+    var timerId, _args, _that;
+    if (typeof func != 'function') {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    wait = Number(wait) || 0;
+    if(immediate===undefined) immediate=false;
+
+    function invokeFunc(time) {
+      func.apply(_that, _args);
+      timerId=null;
+      _args=_that = null;
+    }
+
+    function throttled() {
+      _args = arguments;
+      _that = this;
+      if(!timerId) timerId = setTimeout(invokeFunc, wait);
+    }
+    return throttled;
+  }
+
   window.onload = function(){
     var fdinput = document.getElementById('fangdou');
     fdinput.addEventListener('keyup', debounce(()=>{
@@ -52,7 +72,16 @@
       elp.style.textIndent='2em';
       elp.style.color='#5FB878';
       document.getElementById('fdshowcontent').appendChild(elp);
-    }, 500));
+    }, 1000));
+
+    var fdinput = document.getElementById('jieliu');
+    fdinput.addEventListener('keyup', throttle(()=>{
+      var elp=document.createElement("p");
+      elp.innerHTML = '连续输入内容节流触发';
+      elp.style.textIndent='2em';
+      elp.style.color='#5FB878';
+      document.getElementById('jlshowcontent').appendChild(elp);
+    }, 1000));
   }
 
   //
@@ -79,7 +108,7 @@
           <input type="text" class="fcc-input" id="fangdou" />
         </div>
         <div id="fdshowcontent">
-          <p>监听输入框的keyup事件，防抖实现连续输入仅触发一次</p>
+          <p>监听输入框的keyup事件，防抖实现连续输入仅触发一次；请联系输入超过1s</p>
         </div>
         <hr />
         <div class="fcc-input-group">
@@ -87,7 +116,7 @@
           <input type="text" class="fcc-input" id="jieliu" />
         </div>
         <div id="jlshowcontent"> 
-          <p>监听输入框的keyup事件，节流实现间隔1s触发</p>
+          <p>监听输入框的keyup事件，节流实现间隔1s触发多次；请联系输入超过2s</p>
         </div>
       <hr />
         <p><strong>防抖</strong></p>
@@ -98,7 +127,6 @@
 function debounce(func, wait, immediate) {
   // 使用闭包，防止timerId被污染，并且可记录timerId未丢失
   var timerId,  _args, _that;
-
   if (typeof func != 'function') {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
@@ -128,6 +156,8 @@ function debounce(func, wait, immediate) {
         </p>
         <hr>
         <p><strong>节流</strong></p>
+        <p>1，类似防抖的代码实现</p>
+        <p style="color:salmon">2，利用定时器setTimeout延迟执行的属性，判断定时器是否存在，若不存在，则设置定时器，若存在，则等待定时器执行完成</p>
       </div>
     </div>
   </div>
