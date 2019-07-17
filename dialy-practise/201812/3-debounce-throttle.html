@@ -14,6 +14,7 @@
     return window.Date.now();
   };
 
+  // 产生闭包，防止timerId被污染，并且可记录timerId未丢失
   function debounce(func, wait, options) {
     var lastArgs,
         lastThis,
