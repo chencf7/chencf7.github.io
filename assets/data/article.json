@@ -12,8 +12,14 @@
   "url": "./dialy-practise/201906/2-waterfall.html"
 },{
   "title": "css实现圣杯布局",
-  "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应，其中某部分内容比其他内容高的时候，保证三者元素等高。",
+  "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应",
   "tag": "css",
   "time": "2018年12月4日",
   "url": "./dialy-practise/201812/1-layoutShengbei.html"
+},{
+  "title": "css实现双飞翼布局",
+  "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应",
+  "tag": "css",
+  "time": "2018年12月4日",
+  "url": "./dialy-practise/201812/2-layoutShuangfeiyi.html"
 }]

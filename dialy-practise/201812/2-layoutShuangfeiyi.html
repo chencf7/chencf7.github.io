@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--声明视窗为设备宽度，兼容移动端设备-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>双飞翼布局的实现</title>
+<link rel="stylesheet" href="../../assets/css/index.css" type="text/css" />
+<style type="text/css">
+  header{
+    height: 0.64rem;
+    width: 100%;
+    background: #cccccc;
+  }
+  .sb-body{
+    width: 100%;
+    overflow: hidden; /* 形成BFC撑开文档 */
+  }
+  .sb-content{
+    float:left;
+    width: 100%;
+    background: #eee;
+    min-height: 3rem;
+  }
+  .sb-main{
+    margin: 0 2rem;
+  }
+  .left{
+    float:left;
+    width: 2rem;
+    background: cyan;
+    color:#fff;
+    min-height: 3rem;
+    margin-left: -100%;
+  }
+  .right{
+    float:left;
+    width: 2rem;
+    background: salmon;
+    color:#fff;
+    min-height: 3rem;
+    margin-left: -2rem;
+  }
+</style>
+<body ontouchstart>
+  <div>
+    <div class="fcc-header">
+      <div class="content">
+        <nav>
+          <div class="sites-logo">
+            <h1 class="site-title">
+              <a href="../../index.html" title="CF CHEN" rel="home">CF CHEN</a>
+            </h1>
+            <p class="site-description">技术，前端，分享</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="fcc-content content">
+      <div style="margin:10px">
+        <p>圣杯布局、双飞翼布局的目的都是实现左右两栏固定宽度，中间部分自适应。 </p>
+        <p>双飞翼布局是在middle的div里又插入一个div，通过调整内部div的margin值，实现中间栏自适应，内容写到内部div中。</p>
+        <hr />
+        <p>总体实现原理参考<a href="../../dialy-practise/201812/1-layoutShengbei.html">圣杯布局</a>，使用float+margin-left进行布局</p>
+        <p><strong>弊端</strong></p>
+        <p>1，新增dom</p>
+        <p>2，布局可适配的最小宽度要小于圣杯布局，为left.width</p>
+      </div>
+    </div>
+    <div>
+      <header>头部</header>
+      <div class="sb-body">
+        <div class="sb-content">
+          <div class="sb-main">content：中间内容部分</div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+      </div>
+      <footer>结束部分</footer>
+    </div>
+  </div>
+</body>
+</html>

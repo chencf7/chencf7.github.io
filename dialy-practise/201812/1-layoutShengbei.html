@@ -1,12 +1,8 @@
-<!--
-  2019--6-1
-  使用CSS绘制几何图形（圆形、三角形、扇形、菱形等）
--->
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!--声明视窗为设备宽度-->
+<!--声明视窗为设备宽度，兼容移动端设备-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>圣杯布局的实现</title>
 <link rel="stylesheet" href="../../assets/css/index.css" type="text/css" />
@@ -78,7 +74,8 @@
         <p>4，利用绝对定位实现左、右边栏靠边</p>
         <p>5，详情使用浏览器开发者工具查看css</p>
         <p><strong>弊端：</strong></p>
-        <p>必须有一个最小宽度，当页面小于最小宽度时布局就会乱掉。所以最好给body设置一个min-width</p>
+        <p>中间的content必须有一个最小宽度，当页面小于最小宽度时布局就会乱掉，左右边栏浮动元素会移动到下一行。所以最好给body设置一个min-width</p>
+        <p>相比双飞翼布局，其所能适应的最小宽度比较大，为left.width * 2 + right.width，原因是：“由于设置了相对定位，所以当left原来的位置和right的位置产生重叠时，由于浮动的原因一行放不下就会换行。然后布局就被打乱了”</p>
       </div>
     </div>
     <div>
