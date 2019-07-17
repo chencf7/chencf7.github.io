@@ -20,6 +20,12 @@
   "title": "css实现双飞翼布局",
   "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应",
   "tag": "css",
-  "time": "2018年12月4日",
+  "time": "2018年12月9日",
   "url": "./dialy-practise/201812/2-layoutShuangfeiyi.html"
+},{
+  "title": "js之防抖、节流的实现",
+  "content": "debounce（防抖）和throttle（节流）可用来减少调用频率，避免进行部分操作resize、scroll、keyup，或者输入框内容校验等操作时，频繁的调用...",
+  "tag": "javascript；防抖、节流",
+  "time": "2018年12月13日",
+  "url": "./dialy-practise/201812/3-debounce-throttle.html"
 }]

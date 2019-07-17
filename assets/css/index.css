@@ -18,10 +18,7 @@ div, section, p, header, footer, nav, ul, li, dl, dt, dd, h1,h2,h3,h4,h5{
 input, select{
   padding: 0;
   margin: 0;
-  line-height: 0.22rem;
-  font-size: 0.14rem;
   outline: none;
-  border: none;
 }
 div{
   box-sizing: border-box;
@@ -519,4 +516,25 @@ hr{
   -moz-transition: all .4s;
   -o-transition: all .4s;
   transition: all .4s;
+}
+/**************************************************
+ end-主页文章card样式
+ */
+
+.fcc-input, .fcc-textarea{
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding-left: 10px;
+  height: 32px;
+  line-height: 1.1;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  border-radius: 2px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-appearance: none;
+}
+.fcc-input:focus, .fcc-textarea:focus {
+  border-color: #C9C9C9!important;
 }
