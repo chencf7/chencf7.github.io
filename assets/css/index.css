@@ -551,3 +551,17 @@ pre{
 .fcc-input:focus, .fcc-textarea:focus {
   border-color: #C9C9C9!important;
 }
+
+
+
+@media (min-width: 768px) {
+  .site-menu ul:first-child{
+    display: block;
+  }
+  .site-menu ul:last-child{
+    display: none;
+  }
+  .fcc-slider{
+    height: 2.4rem;
+  }
+}
