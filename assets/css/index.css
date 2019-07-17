@@ -30,7 +30,7 @@ hr{
   
 }
 pre{
-  width: 100%;
+  /* width: 100%; */
   background: #282c34;
   color: #fff;
   font-family: Menlo,Monaco,Consolas,Courier New,monospace;
