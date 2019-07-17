@@ -46,7 +46,12 @@
   window.onload = function(){
     var fdinput = document.getElementById('fangdou');
     fdinput.addEventListener('keyup', debounce(()=>{
-      console.log("123");
+      var elp=document.createElement("p");
+      //document.createDocumentFragment()
+      elp.innerHTML = '连续输入内容防抖触发1次';
+      elp.style.textIndent='2em';
+      elp.style.color='#5FB878';
+      document.getElementById('fdshowcontent').appendChild(elp);
     }, 500));
   }
 
@@ -69,6 +74,22 @@
     </div>
     <div class="fcc-content content">
       <div style="margin:10px">
+        <div class="fcc-input-group">
+          <label style="margin-bottom: 5px; display: block;">请输入内容查看防抖</label>
+          <input type="text" class="fcc-input" id="fangdou" />
+        </div>
+        <div id="fdshowcontent">
+          <p>监听输入框的keyup事件，防抖实现连续输入仅触发一次</p>
+        </div>
+        <hr />
+        <div class="fcc-input-group">
+          <label style="margin-bottom: 5px; display: block;">请输入内容查看节流</label>
+          <input type="text" class="fcc-input" id="jieliu" />
+        </div>
+        <div id="jlshowcontent"> 
+          <p>监听输入框的keyup事件，节流实现间隔1s触发</p>
+        </div>
+      <hr />
         <p><strong>防抖</strong></p>
         <p>1，在闭包内部定义一个随时可以访问的变量timeId，在闭包内部定义可防止变量被全局污染，以及timeId可以保存防抖延迟执行的定时器</p>
         <p>2，利用定时器setTimeout延迟执行的属性，判断定时器是否存在，存在清除掉，重新设置定时器</p>
@@ -105,12 +126,8 @@ function debounce(func, wait, immediate) {
 }
 </pre>
         </p>
-        <div class="fcc-input-group">
-          <label>请输入内容查看防抖</label>
-          <input type="text" class="fcc-input" id="fangdou" />
-        </div>
-        <div></div>
-        <input type="button" id="sendemail" value="发送">
+        <hr>
+        <p><strong>节流</strong></p>
       </div>
     </div>
   </div>
