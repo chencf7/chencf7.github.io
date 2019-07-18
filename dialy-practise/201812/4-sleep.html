@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--声明视窗为设备宽度，兼容移动端设备-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>js实现sleep函数</title>
+<link rel="stylesheet" href="../../assets/css/index.css" type="text/css" />
+<style type="text/css">
+</style>
+<body ontouchstart>
+  <div>
+    <div class="fcc-header">
+      <div class="content">
+        <nav>
+          <div class="sites-logo">
+            <h1 class="site-title">
+              <a href="../../index.html" title="CF CHEN" rel="home">CF CHEN</a>
+            </h1>
+            <p class="site-description">技术，前端，分享</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="fcc-content content">
+      <div style="margin:10px">
+        <p><strong>sleep函数</strong></p>
+        <p>js中一般用setTimeout或者setTimeInterval实现函数的延迟执行，但是这两个方法相当于开启的新的线程进行等待。如果我们想让代码串行的进行等待，即不通过回调实现，这两个函数就实现不了。</p>
+        <hr />
+        <p><strong>实现方式</strong></p>
+        <p>1，伪造死循环实现，耗费cpu性能</p>
+<pre>
+  function sleep(delay){
+    var start=Date.now();
+    while((Date.now()-start)&ltdelay){
+      // 循环
+    }
+  }
+  sleep(1000);
+</pre>
+        <p>2，使用promise对象，实现链式编程</p>
+<pre>
+  function sleep(delay){
+    return new Promise((resolve, reject)=>{
+      setTimeout(resolve, delay);
+    });
+  }
+  sleep(1000).then(()=>{
+    // 执行
+  });
+</pre>
+        <p>3，使用promise对象以及async await关键字</p>
+<pre>
+  function sleep(delay){
+    return new Promise((resolve, reject)=>{
+      setTimeout(resolve, delay);
+    });
+  }
+  async function test(){
+    await sleep(1000)
+    // 执行
+  }
+</pre>
+        <p>4，通过generate来实现<span style="color: salmon;">TODO: 待深入学习</span></p>
+<pre>
+  function* sleep(ms){
+    yield new Promise(function(resolve,reject){
+      setTimeout(resolve,ms);
+    })  
+  }
+  sleep(500).next().value.then(()=>{
+    // 执行
+  })
+</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

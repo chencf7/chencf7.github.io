@@ -31,10 +31,11 @@ hr{
 }
 pre{
   /* width: 100%; */
-  background: #282c34;
-  color: #fff;
-  font-family: Menlo,Monaco,Consolas,Courier New,monospace;
-  border: 1px solid #ccc;
+  background: #efeeee;
+  color: #000;
+  /* font-family: Menlo,Monaco,Consolas,Courier New,monospace; */
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  border: 1px solid rgb(235,235,235);
   padding: 5px;
   overflow-x: auto;
   border-radius: 4px;
