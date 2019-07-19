@@ -436,7 +436,7 @@ pre{
  */
 .fcc-article{
   position: relative;
-  margin: 0 0 0.1rem 0;
+  margin: 0;
   padding: 0.1rem;
   overflow: hidden;
 }
@@ -511,6 +511,11 @@ pre{
 }
 .atl-meta-cate:hover a{
   color: #fff;
+}
+.atl-meta-group{
+  position: absolute;
+  right: 0.87rem;
+  bottom: 0.15rem;
 }
 .atl-meta-group .date{
   color: #adadad;
