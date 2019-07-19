@@ -22,3 +22,5 @@ lebroncc的个人博客
 2. css盒子模型margin塌陷
 3. 深入理解CSS行高line-height与文本垂直居中的原理：https://www.jb51.net/css/484756.html
 4. 函数式编程，柯里化：https://www.jianshu.com/p/d4acb140eb3d
+
+5. 轮播图初始化时就设置好div的宽高，以及img的宽高，两者宽高相同；随着屏幕大小进行按照比列重新设置图片宽高
