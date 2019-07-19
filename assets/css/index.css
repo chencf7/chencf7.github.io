@@ -514,8 +514,8 @@ pre{
 }
 .atl-meta-group{
   position: absolute;
-  right: 0.87rem;
-  bottom: 0.15rem;
+  right: 0;
+  bottom: 0.12rem;
 }
 .atl-meta-group .date{
   color: #adadad;
