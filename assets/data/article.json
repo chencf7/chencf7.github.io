@@ -34,6 +34,12 @@
   "tag": "javascript；sleep",
   "time": "2018年12月13日",
   "url": "./dialy-practise/201812/4-sleep.html"
+},{
+  "title": "jQuery中4种绑定事件的方法",
+  "content": "jQuery中提供了四种事件监听方式，分别是bind、live、delegate、on，对应的解除监听的函数分别是unbind、die、undelegate、off",
+  "tag": "javascript；jQuery；绑定",
+  "time": "2018年12月15日",
+  "url": "./dialy-practise/201812/5-jq-4binding.html"
 }]
 
 

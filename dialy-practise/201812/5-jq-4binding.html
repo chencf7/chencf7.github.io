@@ -4,8 +4,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!--声明视窗为设备宽度，兼容移动端设备-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>js实现sleep函数</title>
+<title>jQuery中四种绑定事件的方式</title>
 <link rel="stylesheet" href="../../assets/css/index.css" type="text/css" />
+<script type="text/javascript" src="../../assets/scripts/jQuery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    
+  });
+  // 等价于
+  // $(document).ready(function(){
+  // })
+</script>
 <body ontouchstart>
   <div>
     <div class="fcc-header">
@@ -22,14 +31,118 @@
     </div>
     <div class="fcc-content content">
       <div style="margin:10px">
-        <p><strong>sleep函数</strong></p>
-        <p>js中一般用setTimeout或者setTimeInterval实现函数的延迟执行，但是这两个方法相当于开启的新的线程进行等待。如果我们想让代码串行的进行等待，即不通过回调实现，这两个函数就实现不了。</p>
+        <p><strong>概述</strong></p>
+        <p>jQuery中提供了四种事件监听方式，分别是bind、live、delegate、on，对应的解除监听的函数分别是unbind、die、undelegate、off。</p>
         <hr />
-        <p><strong>实现方式</strong></p>
-        <p>1，伪造死循环实现，耗费cpu性能</p>
+        <p><strong>1、bind: function( types, [data], fn )</strong></p>
+        <p>1.1 bind是在选择到的元素上绑定特定事件类型的监听函数，把监听器绑定到目标元素上，有一个绑一个，在页面上的元素不会动态添加的时候使用它没什么问题。
+          但如果列表中动态增加一个“列表元素5”，点击它是没有反应的，必须再bind一次才行</p>
+        <br />
+        <p>1.2 jQuery还有一种事件绑定的简写方式如a.click(function(){});、a.change(function(){});等，它们的作用与bind一样，仅仅是简写而已。</p>
+<pre>
+  jQuery.fn.extend({
+    bind: function( types, data, fn ) {
+      return this.on( types, null, data, fn );
+    },
+    unbind: function( types, fn ) {
+      return this.off( types, null, fn );
+    }
+  });
+</pre>
+        <hr />
+        <p><strong>2、delegate: function( childSelector, types, [data], fn ) </strong></p>
+        <p>2.1 delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+          使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）</p>
+        <br />
+        <p>1.2 利用事件冒泡的原理，实现事件委托，判断event的target/currentTarget</p>
+<pre>
+  jQuery.fn.extend({
+    delegate: function( selector, types, data, fn ) {
+      return this.on( types, selector, data, fn );
+    },
+    undelegate: function( selector, types, fn ) {
+      // ( namespace ) or ( selector, types [, fn] )
+      return arguments.length === 1 
+        ? this.off( selector, "**" ) 
+        : this.off( types, selector || "**", fn );
+    }
+  });
+</pre>
+        <hr />
+        <p><strong>3、on: function( types, [selector], [data], fn, [/*INTERNAL*/ one] ) </strong></p>
+        <p>3.1 最终实现是使用document.addEventListener方法进行绑定事件</p>
+<pre>
+  jQuery.fn.extend({
+    on: function( selector, types, data, fn ) {
+      ...
+      return this.each( function() {
+        jQuery.event.add( this, types, fn, data, selector );
+      });
+    },
+    off: function( types, selector, fn ) {
+      ...
+      return this.each(function() {
+        jQuery.event.remove( this, types, fn, selector );
+      });
+    }
+  });
+  jQuery.event = {
+    add: function( elem, types, handler, data, selector ) {
+      //关键代码
+      elem.addEventListener( type, eventHandle, false );
+      ...
+    },
+    remove: function( elem, types, handler, selector, mappedTypes ) {
+      ...
+      if ( elem.removeEventListener ) {
+        elem.removeEventListener( type, handle, false );
+      }
+    }
+  }
+</pre>
+        <hr />
+        <p><strong>4、live: function( event, [data], function ) </strong></p>
+        <p style="color: salmon;">4.1 live() 方法在 jQuery 版本 1.7 中被废弃，在版本 1.9 中被移除。请使用 on() 方法代替。</p>
+        <br />
+        <p>4.2 live方法并没有将监听器绑定到自己(this)身上，而是绑定到了this.context上了，通常情况下，jQuery实例的context即为document</p>
+        <br />
+        <p>4.3 live方法把监听器绑定到了document上了。不把监听器直接绑定在元素上，live利用了事件委托机制来 完成事件的监听处理</p>
+        <br />
+        <p>4.4 缺点，把所有的事件都绑定到document，导致性能很差</p>
+<pre>
+  jQuery.fn.extend({
+    live: function( types, data, fn ) {
+      jQuery( this.context ).on( types, this.selector, data, fn );
+      return this;
+    }
+  });
+</pre>
+<hr />
+        <p><strong>5、one: function( types, [selector], [data], fn ) </strong></p>
+        <p>绑定事件，仅触发一次</p>
+<pre>
+  jQuery.fn.extend({
+    on: function( types, selector, data, fn, /*INTERNAL*/ one ) {
+      ...
+      if ( one === 1 ) {
+        origFn = fn;
+        fn = function( event ) {
+          // Can use an empty set, since event contains the info
+          jQuery().off( event );
+          return origFn.apply( this, arguments );
+        };
+      }
+      return this.each( function() {
+        jQuery.event.add( this, types, fn, data, selector );
+      });
+    },
+    one: function( types, selector, data, fn ) {
+      return this.on( types, selector, data, fn, 1 );
+    }
+  });
+</pre>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="../../assets/scripts/jQuery/jquery-2.1.3.min.js"></script>
 </body>
 </html>
