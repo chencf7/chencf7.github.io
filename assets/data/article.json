@@ -18,7 +18,7 @@
   "url": "./dialy-practise/201812/1-layoutShengbei.html"
 },{
   "title": "css实现双飞翼布局",
-  "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应",
+  "content": "",
   "tag": "css；布局",
   "time": "2018年12月9日",
   "url": "./dialy-practise/201812/2-layoutShuangfeiyi.html"
@@ -40,6 +40,14 @@
   "tag": "javascript；jQuery；绑定",
   "time": "2018年12月15日",
   "url": "./dialy-practise/201812/5-jq-4binding.html"
+},{
+  "title": "函数式编程与柯里化",
+  "content": "",
+  "tag": "javascript；函数式编程；柯里化",
+  "time": "2018年12月20日",
+  "url": "./dialy-practise/201812/6-functionprograming.html"
 }]
+
+
 
 
