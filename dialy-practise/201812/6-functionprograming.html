@@ -26,7 +26,17 @@
     <div class="fcc-content content">
       <div style="margin:10px">
         <p><strong>函数式编程</strong></p>
-        <p></p>
+        <p>1，函数是一等公民，和其他对象都一样，可以像对待任何其他数据类型一样对待它们——把它们存在数组里，当作参数传递，赋值给变量...</p>
+<pre>
+  // 直接使用回调
+  httpGet('/post/2', json => renderPost(json));
+  // 把整个应用里的所有 httpGet 调用都改成这样，可以传递 err 参数。
+  httpGet('/post/2', (json, err) => renderPost(json, err));
+  // 写成一等公民函数的形式，好处是，要做的改动将会少得多
+  httpGet('/post/2', renderPost);  // renderPost 将会在 httpGet 中调用，想要多少参数都行
+</pre>
+        <br />
+        <p>2，纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。思考数组的slice和splice方法</p>
         <hr />
 <pre>
   https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch2.html#快速概览
