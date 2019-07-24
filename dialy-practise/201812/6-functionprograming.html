@@ -9,6 +9,7 @@
 <script type="text/javascript">
 
 </script>
+
 <body ontouchstart>
   <div>
     <div class="fcc-header">
@@ -27,7 +28,7 @@
       <div style="margin:10px">
         <p><strong>函数式编程</strong></p>
         <p>1，函数是一等公民，和其他对象都一样，可以像对待任何其他数据类型一样对待它们——把它们存在数组里，当作参数传递，赋值给变量...</p>
-<pre>
+        <pre>
   // 直接使用回调
   httpGet('/post/2', json => renderPost(json));
   // 把整个应用里的所有 httpGet 调用都改成这样，可以传递 err 参数。
@@ -37,14 +38,67 @@
 </pre>
         <br />
         <p>2，纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。思考数组的slice和splice方法</p>
-        <hr />
+        <p>另一种是用纯函数的方式，Object.freeze，冻结对象，无法修改</p>
+        <pre>
+  //slice创建一个新的数组，slice方法为纯函数
+  let arr=[1,2,3,4,5];
+  arr.slice(0,3)  //=>[1,2,3]，返回一个新的数组，arr不变
+  arr.slice(0,3)  //=>[1,2,3]
+  //splice直接修改所调用的数组
+  arr.splice(0,3) //=>结果为[1,2,3]，arr=[4,5]
+  arr.splice(0,3) //=>结果为[4,5]，arr=[]
+</pre>
+        <p>3，柯里化</p>
+        <p>curry 的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。</p>
+        <p style="text-indent: 2em;">3.1 参数复用</p>
+        <pre>
+  // Currying后
+  function curryingCheck(reg) {
+      return function(txt) {
+          return reg.test(txt)
+      }
+  }
+  var hasNumber = curryingCheck(/\d+/g)
+  var hasLetter = curryingCheck(/[a-z]+/g)
+  
+  hasNumber('test1')      // true
+  hasNumber('testt')   // false
+  hasLetter('21212')      // false
+</pre>
+        <p style="text-indent: 2em;">3.2 预加载，提前确认</p>
 <pre>
+  var on = function(element, event, handler) {
+    if (document.addEventListener) { } 
+    else { }
+  }
+  // curry 提前确认
+  var on = (function() {
+    if (document.addEventListener) {
+      return function(element, event, handler) { };
+    } else {
+      return function(element, event, handler) { };
+    }
+  })();
+</pre>
+          <p style="text-indent: 2em;">3.3 延迟运行</p>
+<pre>
+  Function.prototype.bind=function(context){
+    var _that=this;
+    var args=Array.prototype.slice.call(arguments, 1);
+    return function(){
+      return _that.apply(context, args);
+    }
+  }
+</pre>
+          <p>参考：<a href="https://www.jianshu.com/p/2975c25e4d71">函数柯里化</a></p>
+        <pre>
   https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch2.html#快速概览
   https://www.cnblogs.com/tjyoung/p/8976013.html
-  https://www.jianshu.com/p/2975c25e4d71
+  
 </pre>
       </div>
     </div>
   </div>
 </body>
+
 </html>
