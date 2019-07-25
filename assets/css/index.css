@@ -58,6 +58,12 @@ pre{
 .icon-whirl:focus, .icon-whirl:hover{
   transform: rotate(360deg);
 }
+.highl-text{
+  color: salmon;
+}
+.indent-2ch{
+  text-indent: 2em;
+}
 
 /**************************************************
 网站响应式布局
