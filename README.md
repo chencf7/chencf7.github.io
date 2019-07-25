@@ -24,3 +24,4 @@ lebroncc的个人博客
 4. 函数式编程，柯里化：https://www.jianshu.com/p/d4acb140eb3d
 
 5. 轮播图初始化时就设置好div的宽高，以及img的宽高，两者宽高相同；随着屏幕大小进行按照比列重新设置图片宽高
+6. rxjs
