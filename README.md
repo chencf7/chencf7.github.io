@@ -27,3 +27,4 @@ lebroncc的个人博客
 6. rxjs
 7. ES6 迭代器：http://es6.ruanyifeng.com/#docs/iterator
 8. rxjs的FromEvent事件，如何触发已监听的事件
+9. 如何使用扫描二维码登陆网页
