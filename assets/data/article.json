@@ -58,6 +58,12 @@
   "tag": "javascript；es6",
   "time": "2019年06月15日",
   "url": "./dialy-practise/201906/3-es6-iterator.html"
+},{
+  "title": "javascript观察者模式，发布/订阅模式",
+  "content": "",
+  "tag": "javascript；观察者；发布订阅",
+  "time": "2019年06月15日",
+  "url": "./dialy-practise/201906/4-pubsub-observer.md"
 }]
 
 
