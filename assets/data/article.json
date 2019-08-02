@@ -3,61 +3,61 @@
   "content": "主要使用css border，border-radius，transform来实现...",
   "tag": "css",
   "time": "2019年6月7日",
-  "url": "./dialy-practise/201906/1-cssshape.html"
+  "url": "./practise/201906/1-cssshape.html"
 },{
   "title": "js实现瀑布流网站加载",
   "content": "滚动时动态加载图片，监听图片加载完成获取泳道的高度，每次加载计算...",
   "tag": "js；图片加载；不兼容移动端",
   "time": "2019年6月10日",
-  "url": "./dialy-practise/201906/2-waterfall.html"
+  "url": "./practise/201906/2-waterfall.html"
 },{
   "title": "css实现圣杯布局",
   "content": "圣杯布局和双飞翼布局目的是相同的，都是解决左右两栏固定宽度，中间部分自适应",
   "tag": "css；布局",
   "time": "2018年12月4日",
-  "url": "./dialy-practise/201812/1-layoutShengbei.html"
+  "url": "./practise/201812/1-layoutShengbei.html"
 },{
   "title": "css实现双飞翼布局",
   "content": "",
   "tag": "css；布局",
   "time": "2018年12月9日",
-  "url": "./dialy-practise/201812/2-layoutShuangfeiyi.html"
+  "url": "./practise/201812/2-layoutShuangfeiyi.html"
 },{
   "title": "js之防抖、节流的实现",
   "content": "debounce（防抖）和throttle（节流）可用来减少调用频率，避免进行部分操作resize、scroll、keyup，或者输入框内容校验等操作时，频繁的调用...",
   "tag": "javascript；防抖；节流",
   "time": "2018年12月13日",
-  "url": "./dialy-practise/201812/3-debounce-throttle.html"
+  "url": "./practise/201812/3-debounce-throttle.html"
 },{
   "title": "js中实现sleep（暂停、睡眠）",
   "content": "js中setTimeout或者setTimeInterval实现函数的延迟执行，但是这两个方法相当于开启的新的线程进行等待，而如果我们想让代码串行的进行等待...",
   "tag": "javascript；sleep",
   "time": "2018年12月13日",
-  "url": "./dialy-practise/201812/4-sleep.html"
+  "url": "./practise/201812/4-sleep.html"
 },{
   "title": "jQuery中4种绑定事件的方法",
   "content": "jQuery中提供了四种事件监听方式，分别是bind、live、delegate、on，对应的解除监听的函数分别是unbind、die、undelegate、off",
   "tag": "javascript；jQuery；绑定",
   "time": "2018年12月15日",
-  "url": "./dialy-practise/201812/5-jq-4binding.html"
+  "url": "./practise/201812/5-jq-4binding.html"
 },{
   "title": "函数式编程与柯里化",
   "content": "",
   "tag": "javascript；函数式编程；柯里化",
   "time": "2018年12月20日",
-  "url": "./dialy-practise/201812/6-functionprograming.html"
+  "url": "./practise/201812/6-functionprograming.html"
 },{
   "title": "rxjs概述",
   "content": "",
   "tag": "javascript；rxjs",
   "time": "2019年07月05日",
-  "url": "./dialy-practise/201907/1-rxjs-sketch.html"
+  "url": "./practise/201907/1-rxjs-sketch.html"
 },{
   "title": "es6语法之遍历器、迭代器",
   "content": "",
   "tag": "javascript；es6",
   "time": "2019年06月15日",
-  "url": "./dialy-practise/201906/3-es6-iterator.html"
+  "url": "./practise/201906/3-es6-iterator.html"
 }]
 
 
