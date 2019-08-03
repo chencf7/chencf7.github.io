@@ -10,7 +10,10 @@
 
     var pub=(function(){
       var cache={};
-
+    ```python
+    #!/usr/bin/env python3
+    print("Hello, World!");
+    ```
     })();
 
 参考：https://www.jianshu.com/p/e37ca8369162
