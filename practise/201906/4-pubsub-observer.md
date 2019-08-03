@@ -8,12 +8,11 @@
 3. 发布/订阅模式由统一调度中心调用，因此发布者和订阅者不需要知道对方的存在。
 4. DOM的事件机制就是发布订阅/模式最常见的实现，这大概是前端最常用的编程模型了，监听某事件，当该事件发生时，监听该事件的监听函数被调用。
 
-    var pub=(function(){
-      var cache={};
-    ```python
-    #!/usr/bin/env python3
-    print("Hello, World!");
-    ```
-    })();
+```javascript
+var pub=(function(){
+  var cache={};
+})();
+```
+    
 
 参考：https://www.jianshu.com/p/e37ca8369162
