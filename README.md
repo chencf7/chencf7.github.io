@@ -33,3 +33,5 @@ lebroncc的个人博客
 12. transform: translateZ(0)提升性能
 有关CSS的overflow和border-radius的那些事，你的圆角被覆盖了吗？
 https://www.cnblogs.com/sanshi/p/9712426.html
+
+13. angular ngmodule各种声明属性，entrycomponent， declaretion...
