@@ -35,3 +35,6 @@ lebroncc的个人博客
 https://www.cnblogs.com/sanshi/p/9712426.html
 
 13. angular ngmodule各种声明属性，entrycomponent， declaretion...
+14. js面向对象编程到底是什么
+15. CSS 同级元素position:fixed和margin-top共同使用的问题
+https://segmentfault.com/a/1190000016377243
