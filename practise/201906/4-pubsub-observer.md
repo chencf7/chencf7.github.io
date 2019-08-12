@@ -33,6 +33,11 @@ var pubsub=(function(){
       cache[type][--i].apply(null, args);
     }
   }
+
+  return {
+    subscribe,
+    publish
+  }
 })();
 // 使用
 pubsub.subscribe('fun', function(args1, args2){
@@ -41,7 +46,35 @@ pubsub.subscribe('fun', function(args1, args2){
 pubsub.subscribe('fun', function(args1, args2){
   console.log('订阅fun事件，执行2次');
 });
+pubsub.publish('fun', ['123', '456']);
+```
 
+```javascript
+// 以原型链的形式实现
+function pubsub(){
+  this.cache={};
+}
+pubsub.prototype.subscribe=function(et, fn){
+  if(typeof cache[et] === undefined){
+    this.cache[et]=[];
+    this.cache[et].push(fn);
+  }
+  esle{
+    this.cache[et].push(fn);
+  }
+}
+pubsub.prototype.publish=function(et, args){
+  if(!this.cache[et]) return;
+  let i=this.cache[type].length;
+  while(i>0){
+    cache[type][--i].apply(null, args);
+  }
+}
+// 使用
+var pubsub = new pubsub();
+pubsub.subscribe('fun', function(args1, args2){
+  console.log('订阅fun事件，执行1次');
+});
 pubsub.publish('fun', ['123', '456']);
 ```
     
