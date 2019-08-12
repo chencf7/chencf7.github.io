@@ -35,6 +35,10 @@ lebroncc的个人博客
 https://www.cnblogs.com/sanshi/p/9712426.html
 
 13. angular ngmodule各种声明属性，entrycomponent， declaretion...
-14. js面向对象编程到底是什么
+14. js面向对象编程到底是什么，rxjs源码，FromEvent， Create继承Observable
 15. CSS 同级元素position:fixed和margin-top共同使用的问题
 https://segmentfault.com/a/1190000016377243
+
+
+16，函数式编程
+https://www.cnblogs.com/tjyoung/p/8976013.html
