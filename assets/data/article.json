@@ -4,6 +4,12 @@
   "tag": "js；react",
   "time": "2019年8月1日",
   "url": "./platform"
+},{
+  "title": "人力资源框架",
+  "content": "react+typescript+tslint+redux+scss",
+  "tag": "js；react",
+  "time": "2019年8月1日",
+  "url": "./hrsystem"
 }, {
   "title": "纯css实现圆形、三角形、扇形、菱形...",
   "content": "主要使用css border，border-radius，transform来实现...",
