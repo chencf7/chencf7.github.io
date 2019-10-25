@@ -7,7 +7,13 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch array_quchong",
+      "program": "${workspaceFolder}\\practise\\201910\\3.array_quchong.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch functionshengming",
       "program": "${workspaceFolder}\\practise\\201907\\2-functionshengming.js"
     }
   ]
